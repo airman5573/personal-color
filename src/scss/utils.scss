@@ -1,0 +1,22 @@
+@for $i from 1 through 100 {
+  .mw-#{$i} {
+    max-width: percentage($number: ($i/100));
+  }
+}
+@for $i from 1 through 100 {
+  .mb-#{$i} {
+    margin-bottom: #{$i}vh;
+  }
+}
+
+@for $i from 1 through 100 {
+  .pt-#{$i} {
+    padding-top: percentage($number: ($i/100));
+  }
+}
+
+@for $i from 1 through 100 {
+  .pb-#{$i} {
+    padding-bottom: percentage($number: ($i/100));
+  }
+}

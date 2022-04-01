@@ -1,7 +1,86 @@
+@import './normalize';
+@import './utils';
+
 img {
   width: 100%;
 }
 
 button{
   background: inherit ; border:none; box-shadow:none; border-radius:0; padding:0; overflow:visible; cursor:pointer
+}
+
+html, body {
+  height: 100vh;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.v-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.center {
+  @extend .v-center;
+  justify-content: center;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+
+#root {
+  @extend .v-center;
+  max-width: 640px;
+  background-color: gray;
+}
+
+.container {
+  margin: 0 auto;
+  background-color: green;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.intro {
+  .name-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -15px;
+    img {
+      position: relative;
+    }
+    input {
+      z-index: 2;
+      position: absolute;
+      width: 90%;
+      outline: none;
+      border: none;
+      text-align: center;
+      font-size: 2.6rem; /* general fallback */
+      &::placeholder {
+        font-size: 1.7rem;
+      }
+      &:focus {
+        border: none;
+        outline: none;
+      }
+    }
+  }
+}
+
+.q1 {
 }

@@ -19,7 +19,6 @@ button{
 
 #root {
   @extend .center;
-  height: 100vh;
   position: relative;
 }
 
@@ -33,7 +32,6 @@ button{
 
 .wrapper {
   max-width: 640px;
-  background-color: gray;
   margin: 0 auto;
 }
 
@@ -42,7 +40,6 @@ button{
   visibility: none;
   position: relative;
   margin: 0 auto;
-  background-color: green;
   padding-left: 5%;
   padding-right: 5%;
   // min-height: 100vh;

@@ -31,3 +31,11 @@ export const resetArrFrom = (_arr: Array<number>, _from: number) => {
   }
   return arr;
 };
+
+export const getMaxWidth = (width: number, height: number): number => {
+  if (!width || !height) return 640;
+  const $body = document.querySelector('body') as HTMLElement;
+  if (!$body) return 640;
+  const maxWidth = Math.floor(($body.clientHeight / height) * width);
+  return maxWidth;
+};

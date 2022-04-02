@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100vh;
+}
+
 img {
   width: 100%;
 }
@@ -14,9 +18,13 @@ button{
 }
 
 #root {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @extend .center;
+  height: 100vh;
+  position: relative;
+}
+
+.visibility-none {
+  visibility: hidden;
 }
 
 .h100 {
@@ -24,25 +32,38 @@ button{
 }
 
 .wrapper {
-  @extend .v-center;
   max-width: 640px;
   background-color: gray;
+  margin: 0 auto;
 }
 
 .container {
+  @extend .center;
+  visibility: none;
   position: relative;
   margin: 0 auto;
   background-color: green;
   padding-left: 5%;
   padding-right: 5%;
+  // min-height: 100vh;
+
+  &.fade-enter {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
 }
 
 .container > .inner, .result-page {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  // position: absolute;
+  // top: 0;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
+  // width: 100%;
+  // height: 100%;
 }
 
 .intro {

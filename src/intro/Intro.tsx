@@ -4,11 +4,13 @@ import NameInputImg from './name-input.png';
 import GoToQuestionImg from './go-to-question.png';
 import Container from '../Container';
 import { useNavigate } from 'react-router-dom';
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { Path } from '../types';
 import { AppContext } from '../Store';
 
 function Intro() {
+  const allImageCount = 4;
+  const [loadedImageCount, setLoadedImageCount] = useState<number>(0);
   const navigation = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null);
   const { updateName } = useContext(AppContext);
@@ -28,24 +30,41 @@ function Intro() {
     navigation(Path.q1);
   };
   return (
-    <Container>
-      <div className="inner">
-        <div className="intro v-center">
-          <img className="title-img mb-5 mw-70" src={TitleImg} alt="" />
-          <img className="person-img" src={PersonImg} alt="" />
-          <div className="name-input-container">
-            <input
-              className="name-input"
-              type="text"
-              placeholder="자신의 이름을 넣어주세요!"
-              ref={inputRef}
-            />
-            <img className="name-input-img" src={NameInputImg} alt="" />
-          </div>
-          <button onClick={handleBtnClick}>
-            <img src={GoToQuestionImg} alt="" />
-          </button>
+    <Container isAllImageLoaded={allImageCount === loadedImageCount}>
+      <div className="intro v-center">
+        <img
+          className="title-img mb-5 mw-70"
+          src={TitleImg}
+          alt=""
+          onLoad={() => setLoadedImageCount((prevState) => prevState + 1)}
+        />
+        <img
+          className="person-img"
+          src={PersonImg}
+          alt=""
+          onLoad={() => setLoadedImageCount((prevState) => prevState + 1)}
+        />
+        <div className="name-input-container">
+          <input
+            className="name-input"
+            type="text"
+            placeholder="자신의 이름을 넣어주세요!"
+            ref={inputRef}
+          />
+          <img
+            className="name-input-img"
+            src={NameInputImg}
+            alt=""
+            onLoad={() => setLoadedImageCount((prevState) => prevState + 1)}
+          />
         </div>
+        <button onClick={handleBtnClick}>
+          <img
+            src={GoToQuestionImg}
+            alt=""
+            onLoad={() => setLoadedImageCount((prevState) => prevState + 1)}
+          />
+        </button>
       </div>
     </Container>
   );

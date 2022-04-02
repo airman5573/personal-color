@@ -1,50 +1,27 @@
-import { SizeMe } from 'react-sizeme';
+import { useEffect, useRef, useState } from 'react';
+import { getMaxWidth } from './utils';
 
 type Props = {
   children: JSX.Element;
+  isAllImageLoaded: boolean;
 };
 
-const getMaxWidth = (width: number, height: number) => {
-  if (!width || !height) return;
-  const $app = document.querySelector('#root') as HTMLElement;
-  const $body = document.querySelector('body') as HTMLElement;
-  if (!$app || !$body) return;
-  const maxWidth = Math.floor(($body.clientHeight / height) * width);
-  return maxWidth;
-};
-
-function Container({ children }: Props) {
+function Container({ children, isAllImageLoaded }: Props) {
+  const [maxWidth, setMaxWidth] = useState<string>('100%');
+  const $this = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!isAllImageLoaded || !$this.current) return;
+    const $el = $this.current;
+    const maxWidth = getMaxWidth($el.offsetWidth, $el.offsetHeight);
+    setMaxWidth(`${maxWidth}px`);
+  }, [isAllImageLoaded]);
+  const visibility = maxWidth === '100%' ? 'hidden' : 'visible';
   return (
-<<<<<<< Updated upstream
-    <div className="container pt-10 pb-10" style={{ maxWidth: '100%' }}>
-      {children}
+    <div className="container pt-10 pb-10" style={{ maxWidth, visibility }}>
+      <div className="inner v-center" ref={$this}>
+        {children}
+      </div>
     </div>
-=======
-    <SizeMe refreshRate={16} monitorHeight={true}>
-      {({ size }) => {
-        const { width, height } = size;
-        const maxWidth = getMaxWidth(width ?? 1, height ?? 1);
-        return (
-          <div className="container pt-10 pb-10" style={{ maxWidth: '100%' }}>
-            {children}
-          </div>
-        );
-      }}
-    </SizeMe>
->>>>>>> Stashed changes
-  );
-  return (
-    <SizeMe refreshRate={16} monitorHeight={true}>
-      {({ size }) => {
-        const { width, height } = size;
-        const maxWidth = getMaxWidth(width ?? 1, height ?? 1);
-        return (
-          <div className="container pt-10 pb-10" style={{ maxWidth: '100%' }}>
-            {children}
-          </div>
-        );
-      }}
-    </SizeMe>
   );
 }
 

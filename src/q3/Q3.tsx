@@ -1,0 +1,39 @@
+import Step3Img from './step3.png';
+import Choice1Img from './choice-1.png';
+import Choice2Img from './choice-2.png';
+import Container from '../Container';
+import { useContext } from 'react';
+import { AppContext } from '../Store';
+import { useNavigate } from 'react-router-dom';
+import { Path } from '../types';
+import { resetArrFrom } from '../utils';
+
+function Q3() {
+  const navigation = useNavigate();
+  const { responses, updateResponses } = useContext(AppContext);
+  const handleClick = (choice: number) => {
+    const arr = resetArrFrom(responses, 3);
+    arr[3] = choice;
+    updateResponses([...arr]);
+    navigation(Path.q4);
+  };
+  return (
+    <Container>
+      <div className="inner">
+        <div className="q3 v-center">
+          <img src={Step3Img} alt="" />
+          <div className="grid-2">
+            <button onClick={() => handleClick(1)}>
+              <img src={Choice1Img} alt="" />
+            </button>
+            <button onClick={() => handleClick(2)}>
+              <img src={Choice2Img} alt="" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </Container>
+  );
+}
+
+export default Q3;

@@ -9,21 +9,23 @@ import { Link } from 'react-router-dom';
 function Q1() {
   return (
     <Container>
-      <div className="q1 v-center">
-        <img src={Step1Img} alt="" />
-        <div className="grid-4">
-          <Link to="/q2">
-            <img src={Choice1Img} alt="" />
-          </Link>
-          <Link to="/q2">
-            <img src={Choice2Img} alt="" />
-          </Link>
-          <Link to="/q2">
-            <img src={Choice3Img} alt="" />
-          </Link>
-          <Link to="/q2">
-            <img src={Choice4Img} alt="" />
-          </Link>
+      <div className="inner">
+        <div className="q1 v-center">
+          <img src={Step1Img} alt="" />
+          <div className="grid-4">
+            <Link to="/q2">
+              <img src={Choice1Img} alt="" />
+            </Link>
+            <Link to="/q2">
+              <img src={Choice2Img} alt="" />
+            </Link>
+            <Link to="/q2">
+              <img src={Choice3Img} alt="" />
+            </Link>
+            <Link to="/q2">
+              <img src={Choice4Img} alt="" />
+            </Link>
+          </div>
         </div>
       </div>
     </Container>

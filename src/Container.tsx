@@ -15,9 +15,23 @@ const getMaxWidth = (width: number, height: number) => {
 
 function Container({ children }: Props) {
   return (
+<<<<<<< Updated upstream
     <div className="container pt-10 pb-10" style={{ maxWidth: '100%' }}>
       {children}
     </div>
+=======
+    <SizeMe refreshRate={16} monitorHeight={true}>
+      {({ size }) => {
+        const { width, height } = size;
+        const maxWidth = getMaxWidth(width ?? 1, height ?? 1);
+        return (
+          <div className="container pt-10 pb-10" style={{ maxWidth: '100%' }}>
+            {children}
+          </div>
+        );
+      }}
+    </SizeMe>
+>>>>>>> Stashed changes
   );
   return (
     <SizeMe refreshRate={16} monitorHeight={true}>

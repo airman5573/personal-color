@@ -1,6 +1,10 @@
 @import './normalize';
 @import './utils';
 
+* {
+  box-sizing: border-box;
+}
+
 img {
   width: 100%;
 }
@@ -9,48 +13,36 @@ button{
   background: inherit ; border:none; box-shadow:none; border-radius:0; padding:0; overflow:visible; cursor:pointer
 }
 
-html, body {
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.h100 {
   height: 100vh;
 }
 
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.v-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.center {
-  @extend .v-center;
-  justify-content: center;
-}
-
-.grid-4 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
-}
-
-#root {
+.wrapper {
   @extend .v-center;
   max-width: 640px;
   background-color: gray;
 }
 
 .container {
+  position: relative;
   margin: 0 auto;
   background-color: green;
   padding-left: 5%;
   padding-right: 5%;
+}
+
+.container > .inner, .result-page {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .intro {
@@ -82,5 +74,24 @@ body {
   }
 }
 
-.q1 {
+.fade-enter {
+  opacity: 0;
+  transform: translate(0, 25px);
+  z-index: 1;
+}
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transform: translate(0, 0);
+
+  transition: opacity 250ms ease-out, transform 300ms ease;
+}
+.fade-exit {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transform: translate(0, 30px);
+
+  transition: opacity 250ms ease-out, transform 300ms ease;
 }

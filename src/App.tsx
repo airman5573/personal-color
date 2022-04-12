@@ -27,7 +27,7 @@ function AppRoutes() {
   const location = useLocation();
   return (
     <TransitionGroup component={null}>
-      <CSSTransition key={location.key} classNames="fade" timeout={400}>
+      <CSSTransition key={location.key} classNames="fade" timeout={600}>
         <Routes location={location}>
           <Route path={Path.home} element={<Intro></Intro>}></Route>
           <Route path={Path.q1} element={<Q1></Q1>}></Route>

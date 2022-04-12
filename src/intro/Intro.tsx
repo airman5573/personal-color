@@ -4,16 +4,25 @@ import NameInputImg from './name-input.png';
 import GoToQuestionImg from './go-to-question.png';
 import Container from '../Container';
 import { useNavigate } from 'react-router-dom';
-import { useContext, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Path } from '../types';
-import { AppContext } from '../Store';
+import { useEffect } from 'react';
 
 function Intro() {
   const allImageCount = 4;
   const [loadedImageCount, setLoadedImageCount] = useState<number>(0);
+  const [fontSize, setFontSize] = useState('5vw');
+  useEffect(() => {
+    if (allImageCount !== loadedImageCount) return;
+    requestAnimationFrame(() => {
+      const $container = document.querySelector(
+        '.wrapper > .container',
+      ) as HTMLElement;
+      setFontSize(`${$container.offsetWidth * 6.2 * 0.01}px`);
+    });
+  }, [loadedImageCount]);
   const navigation = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null);
-  const { updateName } = useContext(AppContext);
   const handleBtnClick = () => {
     if (!inputRef.current) return;
     const $input = inputRef.current;
@@ -26,8 +35,12 @@ function Intro() {
       alert('올바른 입력을 입력해 주세요');
       return;
     }
-    updateName($input.value);
+    localStorage.setItem('personal-color-name', $input.value);
     navigation(Path.q1);
+  };
+  const handleEnterKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key !== 'Enter') return;
+    handleBtnClick();
   };
   return (
     <Container isAllImageLoaded={allImageCount === loadedImageCount}>
@@ -50,6 +63,8 @@ function Intro() {
             type="text"
             placeholder="자신의 이름을 넣어주세요!"
             ref={inputRef}
+            style={{ fontSize }}
+            onKeyUp={handleEnterKeyPress}
           />
           <img
             className="name-input-img"

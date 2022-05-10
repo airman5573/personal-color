@@ -1,10 +1,10 @@
-import Top1Img from './top-1.png';
-import Top2Img from './top-2.png';
-import Top3Img from './top-3.png';
-import BottomImg from './bottom.png';
-import Choice1Img from './choice-1.png';
-import Choice2Img from './choice-2.png';
-import LoadMoreImg from './load-more.png';
+import Top1Img from './summer-cool-top-1.png';
+import Top2Img from './summer-cool-top-2.png';
+import Top3Img from './summer-cool-top-3.png';
+import BottomImg from './summer-cool-bottom.png';
+import Choice1Img from './summer-cool-choice-1.png';
+import Choice2Img from './summer-cool-choice-2.png';
+import LoadMoreImg from './summer-cool-load-more.png';
 import { useEffect } from 'react';
 import { useState } from 'react';
 

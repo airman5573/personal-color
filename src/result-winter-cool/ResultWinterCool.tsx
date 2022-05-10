@@ -1,10 +1,10 @@
-import Top1Img from './top-1.png';
-import Top2Img from './top-2.png';
-import Top3Img from './top-3.png';
-import BottomImg from './bottom.png';
-import Choice1Img from './choice-1.png';
-import Choice2Img from './choice-2.png';
-import LoadMoreImg from './load-more.png';
+import Top1Img from './winter-cool-top-1.png';
+import Top2Img from './winter-cool-top-2.png';
+import Top3Img from './winter-cool-top-3.png';
+import BottomImg from './winter-cool-bottom.png';
+import Choice1Img from './winter-cool-choice-1.png';
+import Choice2Img from './winter-cool-choice-2.png';
+import LoadMoreImg from './winter-cool-load-more.png';
 import { useEffect } from 'react';
 import { useState } from 'react';
 

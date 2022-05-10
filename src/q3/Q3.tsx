@@ -1,6 +1,6 @@
 import Step3Img from './step3.png';
-import Choice1Img from './choice-1.png';
-import Choice2Img from './choice-2.png';
+import Choice1Img from './q3-choice-1.png';
+import Choice2Img from './q3-choice-2.png';
 import Container from '../Container';
 import { useContext, useState } from 'react';
 import { AppContext } from '../Store';

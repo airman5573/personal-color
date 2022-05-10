@@ -1,8 +1,8 @@
 import Step2Img from './step2.png';
-import Choice1Img from './choice-1.png';
-import Choice2Img from './choice-2.png';
-import Choice3Img from './choice-3.png';
-import Choice4Img from './choice-4.png';
+import Choice1Img from './q2-choice-1.png';
+import Choice2Img from './q2-choice-2.png';
+import Choice3Img from './q2-choice-3.png';
+import Choice4Img from './q2-choice-4.png';
 import Container from '../Container';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
